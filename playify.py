@@ -32,6 +32,11 @@ import datetime
 import platform
 import sys
 import math # Needed for the format_bytes helper
+# --- SETUP ---
+BOT_DISCORD_TOKEN = "MTM5Mjc4MjM5OTA4NzA1NDk2OQ.Gx1TO-.2SPFRenw7UayNo2lMmScsMEKyEPhuegep27zYs"
+GENIUS_TOKEN = "dmqO1VR1Jz6hau0B7DMant14OnqUIWWdXYdeDnEB-ft0qtRFD3YazTZvZFfwsXM6" 
+SPOTIFY_CLIENT_ID = 'a895a6a259834c9a9e4067bdf7477fe3'
+SPOTIFY_CLIENT_SECRET = '2fc4d195ae70452f8fc71638642329eb' 
 
 # --- Logging ---
 
@@ -39,8 +44,6 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 # --- API Tokens & Clients ---
-
-GENIUS_TOKEN = "YOUR_GENIUS_TOKEN_HERE" 
 
 if GENIUS_TOKEN and GENIUS_TOKEN != "YOUR_GENIUS_TOKEN_HERE":
     genius = lyricsgenius.Genius(GENIUS_TOKEN, verbose=False, remove_section_headers=True)
@@ -51,8 +54,7 @@ else:
 
 # Official API Client (fast and prioritized)
 
-SPOTIFY_CLIENT_ID = 'CLIENTIDHERE'
-SPOTIFY_CLIENT_SECRET = 'CLIENTSECRETHERE' 
+
 try:
     sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(
         client_id=SPOTIFY_CLIENT_ID,
@@ -3417,4 +3419,4 @@ async def on_ready():
 
 bot.start_time = time.time()
 # Run the bot (replace with your own token)
-bot.run("TOKEN")
+bot.run(BOT_DISCORD_TOKEN)
